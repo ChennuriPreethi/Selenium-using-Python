@@ -1,0 +1,10 @@
+driverPath=r"C:\Users\merit\Desktop\Notes\Python\chromedriver_win32\chromedriver.exe"
+driver=webdriver.Chrome(executable_path=driverPath)
+driver.get("https://www.cricbuzz.com/cricket-team")
+driver.maximize_window()
+
+for i in range(1,38):
+    with open(r"C:\Users\merit\Python Programs\Images\\"+str(i)+".png",'wb') as file:
+        img = driver.find_element_by_xpath("//h1[contains(text(),'Cricket Teams')]//following::img["+str(i)+"]")
+        file.write(img.screenshot_as_png)
+driver.close()
